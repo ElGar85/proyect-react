@@ -7,10 +7,10 @@ const Nav = (props) => {
 
     return (
         <div className={style.contenedorNav}>
-            <Link to="/">BINEVENIDO</Link>
-            <Link to="/about">ACERCA</Link>
-            <Link to="/home">INICIO</Link>
-            <Link to="/crear">CREAR PERSONAJE</Link>
+            <Link className={style.links} to="/.">BIENVENIDO</Link>
+            <Link className={style.links} to="/home">INICIO</Link>
+            <Link className={style.links} to="/favoritos">FAVORITOS</Link>
+            <Link className={style.links} to="/about">ACERCA</Link>
             <SearchBar onSearch={props.onSearch} />
         </div>
     )

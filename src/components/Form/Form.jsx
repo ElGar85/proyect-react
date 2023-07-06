@@ -10,29 +10,30 @@ const Form = () => {
     }
 
     function handleChange (event) {
-        if (event.target.name === "nombre"){
-            setUsuario({...usuario, username: event.target.value});
-        }
+        
+            setUsuario({...usuario, [event.target.value]: event.target.value});
+        
+
     }
 
     return(
         <div>
             <form onSubmit={handleSubmit}>
-                <label >User Name.</label>
+                <label >User Name</label>
                 <input 
                     key='1'
                     name='username' 
                     onChange={handleChange}
                     value={usuario.name} 
                     type="text" />
-                <label htmlFor="">Email.</label>
+                <label htmlFor="">Email</label>
                 <input 
                     key='2'
                     name='email' 
                     onChange={handleChange}
                     value={usuario.name} 
                     type="text" />
-                <label htmlFor="">Password.</label>
+                <label htmlFor="">Password</label>
                 <input 
                     key='3'
                     name='password' 
