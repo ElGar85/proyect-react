@@ -1,17 +1,20 @@
 import { connect, useSelector } from "react-redux"
 import Card from "../Card"
-import style from "../Card.module.css"
+import style from "../Cards.module.css"
+import style2 from '../Card.module.css';
 
 
-const Favoritos = () => {
 
-  const favorites = useSelector((state) => state.favorites);
+const Favoritos = (props) => {
+
+  // const favorites = useSelector((state) => state.favorites);
     // const favorites = state.favorites;
 
     return (
-        <div className={style.container}>
+     
+        <div className={style.contenedor_cards}>
 
-            {favorites?.map((char) => (
+            {props.favorites?.map((char) => (
             <Card
                 key={char.id}
                 id={char.id}
@@ -24,16 +27,17 @@ const Favoritos = () => {
             />
           ))}
         </div>
+      
       );
 
 }
 
-export default Favoritos
+// export default Favoritos;
 
-// export function mapStateToProps(globalState){
-//     return {
-//        favorites: globalState.favorites,
-//     }
-//  }
+export function mapStateToProps(globalState){
+    return {
+       favorites: globalState.favorites,
+    }
+ }
 
-// export default connect(mapStateToProps)(Favoritos);
+export default connect(mapStateToProps)(Favoritos);
