@@ -6,7 +6,6 @@ import Nav from './components/Nav';
 import About from "./components/About";
 import Home from "./components/Home";
 import Detail from "./components/Detail";
-import Form from "./components/Form/Form";
 import FormLogin from "./components/FormLogin/FormLogin";
 import Favoritos from "./components/Favoritos/Favoritos";
 
@@ -33,13 +32,31 @@ function App() {
    },[access]);
 
    function onSearch(id) {
-      axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
-         if (data.name) {
-            setCharacters((oldChars) => [...oldChars, data]);
-         } else {
-            window.alert('¡No hay personajes con este ID!');
-         }
-      });
+      // let existe = true;
+      axios(`http://localhost:3001/rickandmorty/character/${id}`)
+      .then((resp) => {
+         if(resp.data.character.name){
+            
+         //    if (data.name) {
+         //       setCharacters((oldChars) => [...oldChars, data]);
+         //    } else {
+         //       window.alert('¡No hay personajes con este ID!');
+         //    }
+         // }else{
+         //    characters.map((character) => {
+         //       if (character.id !== data.id) {
+         //            existe = false;
+         //          }
+         //       else{
+         //          window.alert('¡ya existe personaje!');
+         //       }
+         //    })
+
+         setCharacters((oldChars) => [...oldChars, resp.data.character]);
+      } else {
+      }
+    })
+    .catch((err) => alert('¡No hay personajes con este ID!'));
    }
 
    const onClose = (id) => {

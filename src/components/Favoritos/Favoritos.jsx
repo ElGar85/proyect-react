@@ -1,9 +1,10 @@
-import { connect, useSelector } from "react-redux"
+import { connect} from "react-redux"
 import Card from "../Card"
 import style from "../Cards.module.css"
 import {filterCards, orderCards} from "../../redux/actions";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
+
 
 
 const Favoritos = (props) => {
@@ -15,19 +16,19 @@ const Favoritos = (props) => {
 
     const handleOrder = (e) => {
         dispatch(orderCards(e.target.value));
-        setAux(true);
+        setAux(!aux);
     }
 
     const handleFilter = (e) => {
         dispatch(filterCards(e.target.value));
-        setAux(true);
+        // setAux(true);
 
     }
 
     return (
      <div>
         <div>
-          <select onChange={handleOrder}>
+          <select className={style.selectores} onChange={handleOrder}>
             <option value="A">Ascendente</option>
             <option value="D">Descendente</option>
           </select>

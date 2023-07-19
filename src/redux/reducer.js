@@ -19,14 +19,14 @@ export default function rootReducer(state = initialGlobalState, action){
         case FILTER:
             return {...state, favorites: state.AllCharacters.filter((pj)=> pj.gender === action.payload)}
         case ORDER:
-            const copy = state.AllCharacters.sort((a,b)=>{
+            const copy = state.favorites.sort((a,b)=>{
                 if(action.payload==='A'){
-                    if(a > b) return 1
-                    if(a < b) return -1
+                    if(a.id > b.id) return 1
+                    if(a.id < b.id) return -1
                     return 0
                 }else{
-                    if(a > b) return -1
-                    if(a < b) return 1
+                    if(a.id > b.id) return -1
+                    if(a.id < b.id) return 1
                     return 0
                 }
             })

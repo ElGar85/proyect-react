@@ -5,15 +5,16 @@ import style from "./Home.module.css"
 import style1 from "./Detail.module.css"
 
 export default function Detail(){
+
     const {id} = useParams();
 
     const [pjDetalle,setPjDetalle]= useState({});
 
     useEffect(() => {
-        axios(`https://rickandmortyapi.com/api/character/${id}`)
-        .then(({ data }) => {
-      if (data.name) {
-         setPjDetalle(data);
+        axios(`http://localhost:3001/rickandmorty/character/${id}`)
+        .then((resp) => {
+      if (resp.data.character.name) {
+         setPjDetalle(resp.data.character);
       } else {
          window.alert('No hay personajes con ese ID');
       }

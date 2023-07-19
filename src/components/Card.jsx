@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import style from './Card.module.css';
 import { Link } from "react-router-dom";
 import {addFavorite, deleteFavorite} from "../redux/actions";
-import { connect, useSelector, useDispatch } from "react-redux";
+import {  useSelector, useDispatch } from "react-redux";
 
 
 function Card({name, species,onClose,gender,status,origin,image,id }) {
